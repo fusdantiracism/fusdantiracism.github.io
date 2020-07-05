@@ -83,7 +83,7 @@
 
         <h3 class="w3-justify">Signed,</h3>
 
-        <h3 class="w3-justify">  Concerned FUSD Students, Teachers, Alumni, Parents, and Community Members</h3>
+        <h3 class="w3-justify"> {{#Total}} Concerned FUSD Students, Teachers, Alumni, Parents, and Community Members</h3>
 
       </div>
 
@@ -104,40 +104,45 @@
     <div class="w3-center w3-light-grey" style="padding:64px 16px" id="signatories">
       <h2 class="w3-center">Signatories:</h2>
 
-      <h4> FUSD Students</h4>
+      <h4>{{#Students}} FUSD Students</h4>
       <div class="w3-center">
         <table style="margin-left:auto; margin-right:auto">
+          {{StudentsList}}
         </table>
       </div>
 
-      <h4> FUSD Teachers, Administration, or Staff</h4>
+      <h4>{{#Teachers}} FUSD Teachers, Administration, or Staff</h4>
       <div class="w3-center">
         <table style="margin-left:auto; margin-right:auto">
+          {{TeachersList}}
         </table>
       </div>
 
-      <h4> FUSD Alumni</h4>
+      <h4>{{#Alumni}} FUSD Alumni</h4>
       <div class="w3-center">
         <table style="margin-left:auto; margin-right:auto">
-          <tr><td>Amal Nanavati</td> <td>(Mission San Jose High 2014)</td></tr>
+          {{AlumniList}}
         </table>
       </div>
 
-      <h4> FUSD Parents</h4>
+      <h4>{{#Parents}} FUSD Parents</h4>
       <div class="w3-center">
         <table style="margin-left:auto; margin-right:auto">
+          {{ParentsList}}
         </table>
       </div>
 
-      <h4> Fremont Community Members</h4>
+      <h4>{{#FremontCommunityMembers}} Fremont Community Members</h4>
       <div class="w3-center">
         <table style="margin-left:auto; margin-right:auto">
+          {{FremontCommunityMembersList}}
         </table>
       </div>
 
-      <h4> Other</h4>
+      <h4>{{#Other}} Other</h4>
       <div class="w3-center">
         <table style="margin-left:auto; margin-right:auto">
+          {{OtherList}}
         </table>
       </div>
 
