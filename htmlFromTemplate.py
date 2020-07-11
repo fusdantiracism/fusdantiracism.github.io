@@ -31,6 +31,8 @@ def processCSV(filepath):
                 if (len(school.strip()) > 0):
                     row += school
                     if (len(year.strip()) > 0):
+                        if "Would have graduated 2014, left school in 2011" in year:
+                            year = "2011"
                         row += " " + year
                     # if (len(otherAffiliation.strip()) > 0):
                     #     row += ", " + otherAffiliation
