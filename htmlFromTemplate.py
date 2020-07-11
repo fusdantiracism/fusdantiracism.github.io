@@ -44,6 +44,8 @@ def processCSV(filepath):
         return signatoriesByFUSDAffiliation, totalNum
 
 if __name__ == "__main__":
+    minNumSig = 1
+
     signatoriesByFUSDAffiliation, numSignatories = processCSV("FUSD Anti-Racism Petition (Responses) - Form Responses 1.csv")
     print(signatoriesByFUSDAffiliation)
 
@@ -60,12 +62,16 @@ if __name__ == "__main__":
                     afterTemplateElement = line[templateElementEndI:]
 
                     if (templateElement == "{{#Total}}"):
-                        finalLines = [beforeTemplateElement + afterTemplateElement]
-                        # finalLines = [beforeTemplateElement + str(numSignatories) + afterTemplateElement]
+                        if numSignatories < minNumSig:
+                            finalLines = [beforeTemplateElement + afterTemplateElement]
+                        else:
+                            finalLines = [beforeTemplateElement + str(numSignatories) + afterTemplateElement]
                     elif (templateElement == "{{#Students}}"):
                         num = len(signatoriesByFUSDAffiliation["FUSD Student"]) if "FUSD Student" in signatoriesByFUSDAffiliation else 0
-                        finalLines = [beforeTemplateElement + afterTemplateElement]
-                        # finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
+                        if num < minNumSig:
+                            finalLines = [beforeTemplateElement + afterTemplateElement]
+                        else:
+                            finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
                     elif (templateElement == "{{StudentsList}}"):
                         finalLines = []
                         if ("FUSD Student" in signatoriesByFUSDAffiliation):
@@ -73,8 +79,10 @@ if __name__ == "__main__":
                                 finalLines.append(row)
                     elif (templateElement == "{{#Teachers}}"):
                         num = len(signatoriesByFUSDAffiliation["FUSD Teacher, Administration, or Staff (current or former)"]) if "FUSD Teacher, Administration, or Staff (current or former)" in signatoriesByFUSDAffiliation else 0
-                        finalLines = [beforeTemplateElement + afterTemplateElement]
-                        # finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
+                        if num < minNumSig:
+                            finalLines = [beforeTemplateElement + afterTemplateElement]
+                        else:
+                            finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
                     elif (templateElement == "{{TeachersList}}"):
                         finalLines = []
                         if ("FUSD Teacher, Administration, or Staff (current or former)" in signatoriesByFUSDAffiliation):
@@ -82,8 +90,10 @@ if __name__ == "__main__":
                                 finalLines.append(row)
                     elif (templateElement == "{{#Alumni}}"):
                         num = len(signatoriesByFUSDAffiliation["FUSD Alumni"]) if "FUSD Alumni" in signatoriesByFUSDAffiliation else 0
-                        finalLines = [beforeTemplateElement + afterTemplateElement]
-                        # finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
+                        if num < minNumSig:
+                            finalLines = [beforeTemplateElement + afterTemplateElement]
+                        else:
+                            finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
                     elif (templateElement == "{{AlumniList}}"):
                         finalLines = []
                         if ("FUSD Alumni" in signatoriesByFUSDAffiliation):
@@ -91,8 +101,10 @@ if __name__ == "__main__":
                                 finalLines.append(row)
                     elif (templateElement == "{{#Parents}}"):
                         num = len(signatoriesByFUSDAffiliation["FUSD Parent"]) if "FUSD Parent" in signatoriesByFUSDAffiliation else 0
-                        finalLines = [beforeTemplateElement + afterTemplateElement]
-                        # finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
+                        if num < minNumSig:
+                            finalLines = [beforeTemplateElement + afterTemplateElement]
+                        else:
+                            finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
                     elif (templateElement == "{{ParentsList}}"):
                         finalLines = []
                         if ("FUSD Parent" in signatoriesByFUSDAffiliation):
@@ -100,8 +112,10 @@ if __name__ == "__main__":
                                 finalLines.append(row)
                     elif (templateElement == "{{#FremontCommunityMembers}}"):
                         num = len(signatoriesByFUSDAffiliation["Fremont Community Member"]) if "Fremont Community Member" in signatoriesByFUSDAffiliation else 0
-                        finalLines = [beforeTemplateElement + afterTemplateElement]
-                        # finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
+                        if num < minNumSig:
+                            finalLines = [beforeTemplateElement + afterTemplateElement]
+                        else:
+                            finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
                     elif (templateElement == "{{FremontCommunityMembersList}}"):
                         finalLines = []
                         if ("Fremont Community Member" in signatoriesByFUSDAffiliation):
@@ -109,8 +123,10 @@ if __name__ == "__main__":
                                 finalLines.append(row)
                     elif (templateElement == "{{#Other}}"):
                         num = len(signatoriesByFUSDAffiliation["Other"]) if "Other" in signatoriesByFUSDAffiliation else 0
-                        finalLines = [beforeTemplateElement + afterTemplateElement]
-                        # finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
+                        if num < minNumSig:
+                            finalLines = [beforeTemplateElement + afterTemplateElement]
+                        else:
+                            finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
                     elif (templateElement == "{{OtherList}}"):
                         finalLines = []
                         if ("Other" in signatoriesByFUSDAffiliation):
