@@ -32,8 +32,8 @@ def processCSV(filepath):
                     row += school
                     if (len(year.strip()) > 0):
                         row += " " + year
-                    if (len(otherAffiliation.strip()) > 0):
-                        row += ", " + otherAffiliation
+                    # if (len(otherAffiliation.strip()) > 0):
+                    #     row += ", " + otherAffiliation
                 elif (len(otherAffiliation.strip()) > 0):
                     row += otherAffiliation
                 row += ")"
