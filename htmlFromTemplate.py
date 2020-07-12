@@ -6,8 +6,11 @@ def processCSV(filepath):
     schoolAffiliationCol = 3
     yearCol = 4
     otherAffiliationCol = 5
+    commentCol = 6
 
     signatoriesByFUSDAffiliation = {}
+    otherAffiliationData = []
+    commentBlocks = []
     totalNum = 0
 
     with open(filepath, "r") as f:
@@ -24,31 +27,50 @@ def processCSV(filepath):
             school = row[schoolAffiliationCol]
             year = row[yearCol]
             otherAffiliation = row[otherAffiliationCol]
+            comment = row[commentCol]
+
+            # Correct anomalous form entries that mess up the webpage design
+            if "Would have graduated 2014, left school in 2011" in year:
+                otherAffiliation = year
+                year = "2011"
+            if comment.lower() == "no" or comment.lower() == "n/a":
+                comment = ""
 
             row = "          <tr><td>"+name+"</td> <td>"
-            if (len(school.strip()) > 0 or len(year.strip()) > 0 or len(otherAffiliation.strip()) > 0):
+            rowNoHTML = name + " (" + fusdAffiliation;
+            if (len(school.strip()) > 0 or len(year.strip()) > 0):
                 row += "("
+                rowNoHTML += ", "
                 if (len(school.strip()) > 0):
                     row += school
+                    rowNoHTML += school
                     if (len(year.strip()) > 0):
-                        if "Would have graduated 2014, left school in 2011" in year:
-                            year = "2011"
                         row += " " + year
-                    # if (len(otherAffiliation.strip()) > 0):
-                    #     row += ", " + otherAffiliation
-                elif (len(otherAffiliation.strip()) > 0):
-                    row += otherAffiliation
-                row += ")"
+                        rowNoHTML += " " + year
+                    row += ")"
+            if (len(otherAffiliation.strip()) > 0):
+                otherAffiliationI = len(otherAffiliationData)
+                row += '&nbsp;&nbsp;<i id="comment%d-button" class="fa fa-plus" aria-hidden="true"></i>' % otherAffiliationI
+                otherAffiliationData.append(otherAffiliation)
             row += "</td></tr>\n"
+            rowNoHTML += ")"
+
+            if (len(comment.strip()) > 0):
+                commentBlock = '''<div class="comment-box"><div class="container">
+          %s
+          <small class="byline">%s</small>
+        </div></div>
+                ''' % (comment, rowNoHTML)
+                commentBlocks.append(commentBlock)
 
             signatoriesByFUSDAffiliation[fusdAffiliation].append(row)
 
-        return signatoriesByFUSDAffiliation, totalNum
+        return signatoriesByFUSDAffiliation, totalNum, otherAffiliationData, commentBlocks
 
 if __name__ == "__main__":
     minNumSig = 1
 
-    signatoriesByFUSDAffiliation, numSignatories = processCSV("FUSD Anti-Racism Petition (Responses) - Form Responses 1.csv")
+    signatoriesByFUSDAffiliation, numSignatories, otherAffiliationData, commentBlocks = processCSV("FUSD Anti-Racism Petition (Responses) - Form Responses 1.csv")
     print(signatoriesByFUSDAffiliation)
 
     with open("template.template", "r") as templateFile:
@@ -63,6 +85,7 @@ if __name__ == "__main__":
                     templateElement = line[templateElementStartI:templateElementEndI]
                     afterTemplateElement = line[templateElementEndI:]
 
+                    finalLines = []
                     if (templateElement == "{{#Total}}"):
                         if numSignatories < minNumSig:
                             finalLines = [beforeTemplateElement + afterTemplateElement]
@@ -75,7 +98,6 @@ if __name__ == "__main__":
                         else:
                             finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
                     elif (templateElement == "{{StudentsList}}"):
-                        finalLines = []
                         if ("FUSD Student" in signatoriesByFUSDAffiliation):
                             for row in signatoriesByFUSDAffiliation["FUSD Student"]:
                                 finalLines.append(row)
@@ -86,7 +108,6 @@ if __name__ == "__main__":
                         else:
                             finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
                     elif (templateElement == "{{TeachersList}}"):
-                        finalLines = []
                         if ("FUSD Teacher, Administration, or Staff (current or former)" in signatoriesByFUSDAffiliation):
                             for row in signatoriesByFUSDAffiliation["FUSD Teacher, Administration, or Staff (current or former)"]:
                                 finalLines.append(row)
@@ -97,7 +118,6 @@ if __name__ == "__main__":
                         else:
                             finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
                     elif (templateElement == "{{AlumniList}}"):
-                        finalLines = []
                         if ("FUSD Alumni" in signatoriesByFUSDAffiliation):
                             for row in signatoriesByFUSDAffiliation["FUSD Alumni"]:
                                 finalLines.append(row)
@@ -108,7 +128,6 @@ if __name__ == "__main__":
                         else:
                             finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
                     elif (templateElement == "{{ParentsList}}"):
-                        finalLines = []
                         if ("FUSD Parent" in signatoriesByFUSDAffiliation):
                             for row in signatoriesByFUSDAffiliation["FUSD Parent"]:
                                 finalLines.append(row)
@@ -119,7 +138,6 @@ if __name__ == "__main__":
                         else:
                             finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
                     elif (templateElement == "{{FremontCommunityMembersList}}"):
-                        finalLines = []
                         if ("Fremont Community Member" in signatoriesByFUSDAffiliation):
                             for row in signatoriesByFUSDAffiliation["Fremont Community Member"]:
                                 finalLines.append(row)
@@ -130,10 +148,18 @@ if __name__ == "__main__":
                         else:
                             finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
                     elif (templateElement == "{{OtherList}}"):
-                        finalLines = []
                         if ("Other" in signatoriesByFUSDAffiliation):
                             for row in signatoriesByFUSDAffiliation["Other"]:
                                 finalLines.append(row)
+                    elif (templateElement == "{{Comments}}"):
+                        for commentBlock in commentBlocks:
+                            print(commentBlock)
+                            finalLines.append(commentBlock)
+                    elif (templateElement == "{{Other_Affiliations}}"):
+                        for i in range(len(otherAffiliationData)):
+                            otherAffiliation = otherAffiliationData[i]
+                            row = "tippy('#comment%d-button', {content: '%s'});" % (i, otherAffiliation)
+                            finalLines.append(row)
                     finalFile.writelines(finalLines)
                 else:
-                    finalFile.write(line)
+                    finalFile.writelines([line])

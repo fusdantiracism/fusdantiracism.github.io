@@ -61,6 +61,46 @@
     font-weight: bold;
   }
 
+  #tooltip {
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+
+  /* Box-sizing reset: //w3bits.com/?p=3225 */
+  html {
+    box-sizing: border-box;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  /* The Comments Container */
+  .comments-container {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+    grid-auto-rows: 20px;
+  }
+
+  /* The comment */
+  .comment-box .container {
+    background: #fff;
+    color: black;
+    padding: 1em;
+    margin: 5px;
+    max-width: 300px;
+    text-align: left;
+  }
+  small.byline {
+    font-weight: bold;
+  };
+
   </style>
   <body>
     <div id="fb-root"></div>
@@ -197,10 +237,18 @@
 
     </div>
 
-    <!-- Team Section -->
+    <!-- Signature Section -->
     <div class="w3-center" style="padding:64px 16px" id="sign">
       <h3 class="w3-center">Add Your Name</h3>
     <p><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfhynWAZkGk80kBqUTcDcD_pWGXqYjidLP4w727P-Is-yClCg/viewform?embedded=true" max-width="748" height="692" width="100%" frameborder="0" marginwidth="0" marginheight="0">Loading&#8230;</iframe></p>
+    </div>
+
+    <!-- Comments Section -->
+    <div class="w3-center w3-dark-grey " style="padding:64px 16px" id="comments" >
+      <h2 class="w3-center">Comments</h2>
+      <div class="comments-container">
+        {{Comments}}
+      </div>
     </div>
 
 
@@ -221,6 +269,39 @@
         <!-- <p>#BlackLivesMatter</p> -->
     </footer>
 
+    <!-- Tooltips -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script>
+      {{Other_Affiliations}}
+    </script>
+
+    <!-- Comments Grid -->
+    <script>
+      function resizeGridItem(item){
+        grid = document.getElementsByClassName("comments-container")[0];
+        rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+        rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
+        rowSpan = Math.ceil((item.querySelector('.container').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
+          item.style.gridRowEnd = "span "+rowSpan;
+      }
+
+      function resizeAllGridItems(){
+        allItems = document.getElementsByClassName("comment-box");
+        for(x=0;x<allItems.length;x++){
+          resizeGridItem(allItems[x]);
+        }
+      }
+
+      function resizeInstance(instance){
+        item = instance.elements[0];
+        resizeGridItem(item);
+      }
+
+      window.onload = resizeAllGridItems();
+      window.addEventListener("resize", resizeAllGridItems);
+
+    </script>
 
   </body>
 </html>

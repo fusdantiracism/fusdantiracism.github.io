@@ -61,6 +61,46 @@
     font-weight: bold;
   }
 
+  #tooltip {
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+
+  /* Box-sizing reset: //w3bits.com/?p=3225 */
+  html {
+    box-sizing: border-box;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  /* The Comments Container */
+  .comments-container {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+    grid-auto-rows: 20px;
+  }
+
+  /* The comment */
+  .comment-box .container {
+    background: #fff;
+    color: black;
+    padding: 1em;
+    margin: 5px;
+    max-width: 300px;
+    text-align: left;
+  }
+  small.byline {
+    font-weight: bold;
+  };
+
   </style>
   <body>
     <div id="fb-root"></div>
@@ -128,7 +168,7 @@
 
         <p class="w3-justify">Signed,</p>
 
-        <p class="w3-justify"> 236 Concerned FUSD Students, Teachers, Alumni, Parents, and Community Members</p>
+        <p class="w3-justify"> 242 Concerned FUSD Students, Teachers, Alumni, Parents, and Community Members</p>
 
       </div>
 
@@ -165,7 +205,7 @@
           <tr><td>Srila Palanikumar</td> <td>(Mission San Jose High 2021)</td></tr>
           <tr><td>Alina Ajaz</td> <td>(Mission San Jose High 2022)</td></tr>
           <tr><td>Audrey Yung</td> <td>(Mission San Jose High 2021)</td></tr>
-          <tr><td>maggie lai</td> <td>(Mission San Jose High 2021)</td></tr>
+          <tr><td>maggie lai</td> <td>(Mission San Jose High 2021)&nbsp;&nbsp;<i id="comment20-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Katrina Rodriguez </td> <td>(Irvington High 2021)</td></tr>
           <tr><td>Victoria Miao</td> <td>(Mission San Jose High)</td></tr>
           <tr><td>Katelyn Ma </td> <td></td></tr>
@@ -177,7 +217,7 @@
           <tr><td>Advika Bhike</td> <td>(Mission San Jose High 2022)</td></tr>
           <tr><td>Sindhu Guddanti</td> <td>(Kennedy High 2022)</td></tr>
           <tr><td>Jessalynn nguyen</td> <td>(Washington High 2021)</td></tr>
-          <tr><td>Nova Cusumano </td> <td>(Washington High 2000)</td></tr>
+          <tr><td>Nova Cusumano </td> <td>(Washington High 2000)&nbsp;&nbsp;<i id="comment28-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Shanthi dave</td> <td>(Mission San Jose High 2021)</td></tr>
           <tr><td>Bianca Abello</td> <td>(Irvington High 2021)</td></tr>
           <tr><td>Erin Yang</td> <td>(Mission San Jose High 2022)</td></tr>
@@ -188,17 +228,17 @@
       <h4>18 FUSD Teachers, Administration, or Staff</h4>
       <div class="w3-center">
         <table style="margin-left:auto; margin-right:auto">
-          <tr><td>Monique Manjarrez</td> <td>(Mattos Elementary)</td></tr>
-          <tr><td>Jenny Appelgren</td> <td>(Oliveira Elementary 2004)</td></tr>
-          <tr><td>Cara Coleman</td> <td>(Weibel Elementary 1996)</td></tr>
+          <tr><td>Monique Manjarrez</td> <td>(Mattos Elementary)&nbsp;&nbsp;<i id="comment0-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
+          <tr><td>Jenny Appelgren</td> <td>(Oliveira Elementary 2004)&nbsp;&nbsp;<i id="comment1-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
+          <tr><td>Cara Coleman</td> <td>(Weibel Elementary 1996)&nbsp;&nbsp;<i id="comment2-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Sammy Yu</td> <td>(Oliveira Elementary)</td></tr>
           <tr><td>Sai Kumar</td> <td>(Mission San Jose High)</td></tr>
-          <tr><td>Lisa Huggins </td> <td>(Oliveira Elementary)</td></tr>
-          <tr><td>Alicia Norling</td> <td>(Green Elementary)</td></tr>
-          <tr><td>Jaime Richards</td> <td>(Centerville Junior High)</td></tr>
-          <tr><td>Nancy Benton</td> <td>(Mission San Jose High)</td></tr>
+          <tr><td>Lisa Huggins </td> <td>(Oliveira Elementary)&nbsp;&nbsp;<i id="comment11-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
+          <tr><td>Alicia Norling</td> <td>(Green Elementary)&nbsp;&nbsp;<i id="comment13-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
+          <tr><td>Jaime Richards</td> <td>(Centerville Junior High)&nbsp;&nbsp;<i id="comment17-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
+          <tr><td>Nancy Benton</td> <td>(Mission San Jose High)&nbsp;&nbsp;<i id="comment18-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Joan Carroll</td> <td>(Oliveira Elementary)</td></tr>
-          <tr><td>Jennifer Diane Uhlig </td> <td>(Vallejo Mill Elementary)</td></tr>
+          <tr><td>Jennifer Diane Uhlig </td> <td>(Vallejo Mill Elementary)&nbsp;&nbsp;<i id="comment27-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Veronica Garcia</td> <td>(Vallejo Mill Elementary)</td></tr>
           <tr><td>Mei Ng</td> <td>(Vallejo Mill Elementary)</td></tr>
           <tr><td>Becky Whitaker</td> <td>(Vallejo Mill Elementary)</td></tr>
@@ -209,7 +249,7 @@
         </table>
       </div>
 
-      <h4>139 FUSD Alumni</h4>
+      <h4>142 FUSD Alumni</h4>
       <div class="w3-center">
         <table style="margin-left:auto; margin-right:auto">
           <tr><td>Amal Nanavati</td> <td>(Mission San Jose High 2014)</td></tr>
@@ -220,13 +260,13 @@
           <tr><td>Priya Talreja</td> <td>(Mission San Jose High 2019)</td></tr>
           <tr><td>Neha Dubey</td> <td>(Mission San Jose High 2017)</td></tr>
           <tr><td>Shivam Parikh</td> <td>(Mission San Jose High 2016)</td></tr>
-          <tr><td>Isaiah Zachariah</td> <td>(American High 2018)</td></tr>
-          <tr><td>Alexis Payne</td> <td>(Kennedy High 2006)</td></tr>
-          <tr><td>Nithya Rajeev</td> <td>(Mission San Jose High 2016)</td></tr>
+          <tr><td>Isaiah Zachariah</td> <td>(American High 2018)&nbsp;&nbsp;<i id="comment6-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
+          <tr><td>Alexis Payne</td> <td>(Kennedy High 2006)&nbsp;&nbsp;<i id="comment7-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
+          <tr><td>Nithya Rajeev</td> <td>(Mission San Jose High 2016)&nbsp;&nbsp;<i id="comment9-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Anuj Nanavati </td> <td>(Mission San Jose High 2017)</td></tr>
           <tr><td>Emily Zheng</td> <td>(Mission San Jose High 2016)</td></tr>
           <tr><td>Arti Patankar</td> <td>(Mission San Jose High 2015)</td></tr>
-          <tr><td>Mansi Shah</td> <td>(Mission San Jose High 2015)</td></tr>
+          <tr><td>Mansi Shah</td> <td>(Mission San Jose High 2015)&nbsp;&nbsp;<i id="comment10-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Thomas Noble</td> <td>(American High 2004)</td></tr>
           <tr><td>Shirin Purkayastha</td> <td>(Mission San Jose High 2014)</td></tr>
           <tr><td>Zoe Lu</td> <td>(Mission San Jose High 2009)</td></tr>
@@ -244,10 +284,10 @@
           <tr><td>Husain Misherghi</td> <td>(Irvington High 2004)</td></tr>
           <tr><td>Courtney Yu</td> <td>(Mission San Jose High 2016)</td></tr>
           <tr><td>George Wang</td> <td>(Mission San Jose High 2016)</td></tr>
-          <tr><td>Justine Tsai</td> <td>(Mission San Jose High 2011)</td></tr>
+          <tr><td>Justine Tsai</td> <td>(Mission San Jose High 2011)&nbsp;&nbsp;<i id="comment14-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>hanniya zohdi</td> <td>(Mission San Jose High 2018)</td></tr>
-          <tr><td>Kavitta Ghai</td> <td>(Irvington High 2015)</td></tr>
-          <tr><td>Alisha Matharu</td> <td>(Mission San Jose High 2015)</td></tr>
+          <tr><td>Kavitta Ghai</td> <td>(Irvington High 2015)&nbsp;&nbsp;<i id="comment15-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
+          <tr><td>Alisha Matharu</td> <td>(Mission San Jose High 2015)&nbsp;&nbsp;<i id="comment16-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Pooja Dubey</td> <td>(Mission San Jose High 2015)</td></tr>
           <tr><td>Harikaran Subbaraj</td> <td>(Mission San Jose High 2016)</td></tr>
           <tr><td>Betty Bei</td> <td>(Mission San Jose High 2014)</td></tr>
@@ -282,13 +322,13 @@
           <tr><td>Jonathan Yuan</td> <td>(Mission San Jose High 2012)</td></tr>
           <tr><td>Alison Sun </td> <td>(Irvington High 2020)</td></tr>
           <tr><td>Saisha Singh</td> <td>(Irvington High 2019)</td></tr>
-          <tr><td>Thea Sarino</td> <td>(Mission San Jose High 2019)</td></tr>
-          <tr><td>Shawna Holmes</td> <td>(Mission San Jose High 1983)</td></tr>
+          <tr><td>Thea Sarino</td> <td>(Mission San Jose High 2019)&nbsp;&nbsp;<i id="comment21-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
+          <tr><td>Shawna Holmes</td> <td>(Mission San Jose High 1983)&nbsp;&nbsp;<i id="comment22-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Avery Jeanne Smith</td> <td>(Mission San Jose High 2018)</td></tr>
           <tr><td>Teresa Joseph</td> <td>(Irvington High 2020)</td></tr>
           <tr><td>Casey Liu</td> <td>(Mission San Jose High 2015)</td></tr>
           <tr><td>Nicholas Ha</td> <td>(Mission San Jose High 2013)</td></tr>
-          <tr><td>Christian Jared Aleman</td> <td>(Mission San Jose High 2019)</td></tr>
+          <tr><td>Christian Jared Aleman</td> <td>(Mission San Jose High 2019)&nbsp;&nbsp;<i id="comment23-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Manjima Sarkar</td> <td>(Mission San Jose High 2015)</td></tr>
           <tr><td>Claire Yung</td> <td>(Mission San Jose High 2018)</td></tr>
           <tr><td>Valerie Tsai</td> <td>(Mission San Jose High 2013)</td></tr>
@@ -300,10 +340,10 @@
           <tr><td>Rachel Hsiao</td> <td>(Mission San Jose High 2020)</td></tr>
           <tr><td>Sonya Wong</td> <td>(Mission San Jose High 2016)</td></tr>
           <tr><td>Gurleen Gill </td> <td>(Mission San Jose High 2014)</td></tr>
-          <tr><td>Ishan Goyal</td> <td>(Mission San Jose High 2014)</td></tr>
+          <tr><td>Ishan Goyal</td> <td>(Mission San Jose High 2014)&nbsp;&nbsp;<i id="comment24-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Tiffany Sung</td> <td>(Mission San Jose High 2015)</td></tr>
           <tr><td>Brian Zhao</td> <td>(Mission San Jose High 2015)</td></tr>
-          <tr><td>Celina Lee</td> <td>(Mission San Jose High 2018)</td></tr>
+          <tr><td>Celina Lee</td> <td>(Mission San Jose High 2018)&nbsp;&nbsp;<i id="comment25-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Sanat Hegde</td> <td>(Mission San Jose High 2019)</td></tr>
           <tr><td>Vina Kong</td> <td>(Mission San Jose High 2015)</td></tr>
           <tr><td>Waylon Peng</td> <td>(Mission San Jose High 2018)</td></tr>
@@ -318,14 +358,14 @@
           <tr><td>Jeanette Lujan</td> <td>(Kennedy High 2008)</td></tr>
           <tr><td>Helen Chen</td> <td>(Mission San Jose High 2020)</td></tr>
           <tr><td>Shruthi Satyanarayana</td> <td>(Mission San Jose High 2017)</td></tr>
-          <tr><td>Simren Kaur</td> <td>(Mission San Jose High 2015)</td></tr>
+          <tr><td>Simren Kaur</td> <td>(Mission San Jose High 2015)&nbsp;&nbsp;<i id="comment26-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Ainsley McClure</td> <td>(Mission San Jose High 2015)</td></tr>
           <tr><td>Allison Hwang</td> <td>(Mission San Jose High 2012)</td></tr>
           <tr><td>Jeremy Wang</td> <td>(Mission San Jose High 2018)</td></tr>
           <tr><td>shannin singh</td> <td>(Mission San Jose High)</td></tr>
           <tr><td>Sindi Ramirez</td> <td>(Irvington High 1996)</td></tr>
           <tr><td>Justin Juan </td> <td>(Mission San Jose High 2012)</td></tr>
-          <tr><td>Vaishnavi Dornadula</td> <td>(Mission San Jose High 2017)</td></tr>
+          <tr><td>Vaishnavi Dornadula</td> <td>(Mission San Jose High 2017)&nbsp;&nbsp;<i id="comment29-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Marina Dalarossa</td> <td>(Mission San Jose High 2017)</td></tr>
           <tr><td>Michelle Dalarossa</td> <td>(Mission San Jose High 2017)</td></tr>
           <tr><td>Valentina Fung</td> <td>(Mission San Jose High 2010)</td></tr>
@@ -349,18 +389,21 @@
           <tr><td>Taylor Jang</td> <td>(Mission San Jose High 2014)</td></tr>
           <tr><td>Keval Parikh </td> <td>(Mission San Jose High 2017)</td></tr>
           <tr><td>Emily Kao</td> <td>(Mission San Jose High 2014)</td></tr>
-          <tr><td>Elizabeth Xu</td> <td>(Mission San Jose High 2015)</td></tr>
+          <tr><td>Elizabeth Xu</td> <td>(Mission San Jose High 2015)&nbsp;&nbsp;<i id="comment32-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Shafee Syed-Quadri </td> <td>(Irvington High 2020)</td></tr>
+          <tr><td>Dana Gurion</td> <td>(Mission San Jose High 2014)</td></tr>
+          <tr><td>Shraesht Mehta Chitkara</td> <td>(Mission San Jose High 2020)</td></tr>
+          <tr><td>Abhijeet Kulkarni</td> <td>(Mission San Jose High 2007)</td></tr>
         </table>
       </div>
 
-      <h4>23 FUSD Parents</h4>
+      <h4>26 FUSD Parents</h4>
       <div class="w3-center">
         <table style="margin-left:auto; margin-right:auto">
-          <tr><td>Elizabeth Whittom</td> <td>(Washington High 2023)</td></tr>
-          <tr><td>Tarrah Henrie</td> <td>(Brier Elementary)</td></tr>
-          <tr><td>Connie Hodgeman</td> <td>(Azevada Elementary)</td></tr>
-          <tr><td>Mehebub Karmali </td> <td>(Mission San Jose High)</td></tr>
+          <tr><td>Elizabeth Whittom</td> <td>(Washington High 2023)&nbsp;&nbsp;<i id="comment3-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
+          <tr><td>Tarrah Henrie</td> <td>(Brier Elementary)&nbsp;&nbsp;<i id="comment4-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
+          <tr><td>Connie Hodgeman</td> <td>(Azevada Elementary)&nbsp;&nbsp;<i id="comment5-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
+          <tr><td>Mehebub Karmali </td> <td>(Mission San Jose High)&nbsp;&nbsp;<i id="comment8-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Yesenia Ramirez</td> <td>(Grimmer Elementary)</td></tr>
           <tr><td>Walelign Aynetaw</td> <td>(Glenmoor Elementary)</td></tr>
           <tr><td>Marie Hughes </td> <td>(Washington High 2018)</td></tr>
@@ -376,10 +419,13 @@
           <tr><td>Roopa Malavally</td> <td>(Mission San Jose High 2023)</td></tr>
           <tr><td>Madhu Nama</td> <td>(Mission San Jose High 2022)</td></tr>
           <tr><td>Aruna Muvva</td> <td>(Mission San Jose High 2003)</td></tr>
-          <tr><td>Padma Gopalakrishnan</td> <td>(Mission San Jose High 2024)</td></tr>
+          <tr><td>Padma Gopalakrishnan</td> <td>(Mission San Jose High 2024)&nbsp;&nbsp;<i id="comment30-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Amit Wasson </td> <td>(Mission San Jose High)</td></tr>
           <tr><td>Krishna Kuchibhotla</td> <td>(Mission San Jose High 2023)</td></tr>
           <tr><td>Joanna Scafuto </td> <td>(Mission San Jose High 202,120,222,026)</td></tr>
+          <tr><td>Veena Kumari</td> <td>(Mission San Jose High)</td></tr>
+          <tr><td>Sangeeta Khandelwal</td> <td>(Mission San Jose High 2022)&nbsp;&nbsp;<i id="comment33-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
+          <tr><td>SirishacYarida</td> <td>(Mission Valley Elementary)</td></tr>
         </table>
       </div>
 
@@ -388,18 +434,18 @@
         <table style="margin-left:auto; margin-right:auto">
           <tr><td>Cecilia Sistena </td> <td>(Mission San Jose High)</td></tr>
           <tr><td>Melina Marignale</td> <td>(Kennedy High)</td></tr>
-          <tr><td>Cauveri Suresh</td> <td>(Circle of Independent Learning 2014)</td></tr>
+          <tr><td>Cauveri Suresh</td> <td>(Circle of Independent Learning 2014)&nbsp;&nbsp;<i id="comment12-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Vrinda M Suresh</td> <td></td></tr>
           <tr><td>Martha Kreeger</td> <td></td></tr>
           <tr><td>Grace Karkanias</td> <td>(Fremont Adult and Continuing Ed)</td></tr>
           <tr><td>Steve Worley</td> <td>(Thornton Junior High)</td></tr>
           <tr><td>Lisa Danz</td> <td></td></tr>
-          <tr><td>Sridhar Krishnan</td> <td>(American High)</td></tr>
+          <tr><td>Sridhar Krishnan</td> <td>(American High)&nbsp;&nbsp;<i id="comment19-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Kerensa Fu</td> <td></td></tr>
           <tr><td>Marsha Squires</td> <td>(Mission San Jose High)</td></tr>
           <tr><td>Rima mattar</td> <td>(Irvington High 2004)</td></tr>
           <tr><td>Julia E Jones</td> <td>(Irvington High 2002)</td></tr>
-          <tr><td>Urmila Padmanabahn</td> <td>(I live in Fremont and my tax dollars fo towards school in Fremont)</td></tr>
+          <tr><td>Urmila Padmanabahn</td> <td>&nbsp;&nbsp;<i id="comment31-button" class="fa fa-plus" aria-hidden="true"></i></td></tr>
           <tr><td>Tony Ma</td> <td>(Mission San Jose High)</td></tr>
           <tr><td>Julia Vielma</td> <td>(Robertson High 2009)</td></tr>
         </table>
@@ -427,10 +473,105 @@
 
     </div>
 
-    <!-- Team Section -->
+    <!-- Signature Section -->
     <div class="w3-center" style="padding:64px 16px" id="sign">
       <h3 class="w3-center">Add Your Name</h3>
     <p><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfhynWAZkGk80kBqUTcDcD_pWGXqYjidLP4w727P-Is-yClCg/viewform?embedded=true" max-width="748" height="692" width="100%" frameborder="0" marginwidth="0" marginheight="0">Loading&#8230;</iframe></p>
+    </div>
+
+    <!-- Comments Section -->
+    <div class="w3-center w3-dark-grey " style="padding:64px 16px" id="comments" >
+      <h2 class="w3-center">Comments</h2>
+      <div class="comments-container">
+<div class="comment-box"><div class="container">
+          In FUSD (Gomes, Hopkins, Mission '14) I learnt that the Civil War was a state's rights issue rather than a slavery issue, I never learnt the gravity of the atrocities committed against indigenous populations, and I never learnt about modern US race relations and how the effects of slavery persist through systems such as mass incarceration. More importantly, I never learnt about systemic racism or about how to identify and challenge the racism present in our own communities. FUSD needs to embrace anti-racism and social justice pedagogies and practices now!
+          <small class="byline">Amal Nanavati (FUSD Alumni, Mission San Jose High 2014)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          FUSD needs to address how its schools are entangled in white supremacy culture in ways that are simultaneously explicit and subtle. It's time that administration and educators confront the ways in which they've been complicit and work towards a better school community that supports all students. 
+          <small class="byline">Alice Cheng (FUSD Alumni, Mission San Jose High 2016)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          This is great effort! Good luck!!
+          <small class="byline">Connie Hodgeman (FUSD Parent, Azevada Elementary)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          FUSD administration continues the long practice of ignoring its hardworking teachers, students and their  collective needs in the East Bay. Silence and inaction in this matter and other important safety precautions is violence against the BPOC who will and have been disproportionally affected by institutionalized racism. 
+          <small class="byline">Isaiah Zachariah (FUSD Alumni, American High 2018)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          This is a long overdue conversation I hope will be given its due respect and attention. 
+          <small class="byline">Nithya Rajeev (FUSD Alumni, Mission San Jose High 2016)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          All the books I read in 11th grade, the year of "American Literature," were written by white men. That does not represent the full diversity and history of America.
+          <small class="byline">Shayna Kothari (FUSD Alumni, Mission San Jose High 2017)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          Anti-racism work teaches us how to interrupt bias around all issues including gender, religious, age, economic, ability and race based discrimination.  This develops in community members a solid base and common language for dismantling systemic racism and nurturing beloved communities, cooperative lives and relationships that are not exploitive in nature. Critical needs in climate justice, healthcare, criminal justice reform and inequality can be solved by all people working together, not apart.  That can only be done in a just society, thank you for doing this work!
+          <small class="byline">Martha Kreeger (Fremont Community Member)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          I wish my education had this!
+          <small class="byline">Grace Karkanias (Fremont Community Member, Fremont Adult and Continuing Ed)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          FUSD education & awful SROs have been incredibly harmful to myself and my family. The prevalent racism and white supremacy within the system was a large reason to why I was unable to graduate from MSJHS. 
+          <small class="byline">Justine Tsai (FUSD Alumni, Mission San Jose High 2011)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          Let's continue to evolve and progress
+          <small class="byline">Jaime Richards (FUSD Teacher, Administration, or Staff (current or former), Centerville Junior High)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          I am a former student and now I am a classroom teacher. I believe that our district can and must do better to serve our students. 
+          <small class="byline">Sarah Pereira  (FUSD Alumni, Mission San Jose High 2013)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          I disagree fairly strongly with 3a and b as I think there's no real need to go so far, but I agree with the majority of the changes proposed.
+          <small class="byline">Dean Luo (FUSD Alumni, Mission San Jose High 2013)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          Students of color deserve to see their stories reflected in the curriculum taught to them, and they deserve a safe environment to learn.
+          <small class="byline">Kerensa Fu (Fremont Community Member)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          Sometimes students don't realize how problematic a class is until they leave because it's so normalized. It's FUSDs job to make sure they never have to have that revelation at all.
+          <small class="byline">Preeshia Sundarraj (FUSD Student, Mission San Jose High 2021)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          This is a great commitment for us to do better for our students and the future of this country.
+          <small class="byline">Jennifer Diane Uhlig  (FUSD Teacher, Administration, or Staff (current or former), Vallejo Mill Elementary)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          This would be a wonderful thing to add.  Our kids are confused with all this going on and don’t understand 
+          <small class="byline">Roció Quinonez (FUSD Parent, Vallejo Mill Elementary 2022)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          No racism or bullying anytime 
+          <small class="byline">Aruna Muvva (FUSD Parent, Mission San Jose High 2003)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          Teachers need racial sensitivity training. Teachers who make racist comments or discriminate on the basis of race must be warned, suspended and fired for repeat offenses. 
+          <small class="byline">Padma Gopalakrishnan (FUSD Parent, Mission San Jose High 2024)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          Way past time to teach anti-racism. Please read the MSJHS student essay on Medium.com about the anti-Asian racism in the schools.
+          <small class="byline">Urmila Padmanabahn (Fremont Community Member)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          I would like to shout out Mr. Rath at MSJHS for an already inclusive, embracing English curriculum when I took his course in 2010. He planted the seeds for the kind of flowering of consciousness our generation is having now. I hope FUSD can follow the lead of teachers like him.
+          <small class="byline">Thomas Feng (FUSD Alumni, Mission San Jose High 2012)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          Teachers need to be better examples of what not to do or say
+          <small class="byline">Joanna Scafuto  (FUSD Parent, Mission San Jose High 202,120,222,026)</small>
+        </div></div>
+                <div class="comment-box"><div class="container">
+          We need the change and it needs immediate attention. 
+          <small class="byline">Sangeeta Khandelwal (FUSD Parent, Mission San Jose High 2022)</small>
+        </div></div>
+                      </div>
     </div>
 
 
@@ -451,6 +592,38 @@
         <!-- <p>#BlackLivesMatter</p> -->
     </footer>
 
+    <!-- Tooltips -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script>
+tippy('#comment0-button', {content: 'FUDTA Equity & Human Rights Chairperson '});tippy('#comment1-button', {content: 'FUSD alumni (AHS c/o 2004), current FUSD educator, FUDTA member, FUDTA Equity and Human Rights Committee Member'});tippy('#comment2-button', {content: '3rd grade teacher, MSJHS Alumni '});tippy('#comment3-button', {content: 'PTA member'});tippy('#comment4-button', {content: 'COIL and Kennedy '});tippy('#comment5-button', {content: 'Pta program coordinator'});tippy('#comment6-button', {content: 'Teachers assistant, club lead'});tippy('#comment7-button', {content: 'Class Vice President, Peer Advocate '});tippy('#comment8-button', {content: 'Math teacher @ msjh'});tippy('#comment9-button', {content: 'Member of the Smoke Signal editorial board'});tippy('#comment10-button', {content: 'MSJHS ASB VP, 2014-2015'});tippy('#comment11-button', {content: 'Elementary Teacher, FUDTA member'});tippy('#comment12-button', {content: 'Student at Irvington High for 1 year'});tippy('#comment13-button', {content: '1st grade teacher, FUDTA member'});tippy('#comment14-button', {content: 'Would have graduated 2014, left school in 2011'});tippy('#comment15-button', {content: 'Former DECA President and ASB Member '});tippy('#comment16-button', {content: 'Senior Class Secretary 2015'});tippy('#comment17-button', {content: 'Teacher/Coach at seven different FUSD schools'});tippy('#comment18-button', {content: 'Parent and FUSD alumni'});tippy('#comment19-button', {content: 'Former FUSD Parent'});tippy('#comment20-button', {content: 'staff writer on the Smoke Signal'});tippy('#comment21-button', {content: 'Peer Resource Mentor, Universal Performers Vice President'});tippy('#comment22-button', {content: 'Parent of MSJHS graduate (2018)'});tippy('#comment23-button', {content: 'Transient of color at IHS, WHS, RHS, MSJHS, FAS, & Vista'});tippy('#comment24-button', {content: 'President of MSJ DECA, Editor of Smoke Signal'});tippy('#comment25-button', {content: 'UCLA student'});tippy('#comment26-button', {content: 'Gay-Straight Alliance executive member'});tippy('#comment27-button', {content: 'FUDTA member, WHS 2002 Alumni, parent of 2 FUSD students in SDI program'});tippy('#comment28-button', {content: 'Centerville Jr. High, Parkmont Elementary '});tippy('#comment29-button', {content: 'Founder and President of the MSJ 3D Printing Club'});tippy('#comment30-button', {content: 'None '});tippy('#comment31-button', {content: 'I live in Fremont and my tax dollars fo towards school in Fremont'});tippy('#comment32-button', {content: 'N/A'});tippy('#comment33-button', {content: 'PTA volunteer, MPPFA volunteer, community volunteer, SSC member and a parent '});    </script>
+
+    <!-- Comments Grid -->
+    <script>
+      function resizeGridItem(item){
+        grid = document.getElementsByClassName("comments-container")[0];
+        rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+        rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
+        rowSpan = Math.ceil((item.querySelector('.container').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
+          item.style.gridRowEnd = "span "+rowSpan;
+      }
+
+      function resizeAllGridItems(){
+        allItems = document.getElementsByClassName("comment-box");
+        for(x=0;x<allItems.length;x++){
+          resizeGridItem(allItems[x]);
+        }
+      }
+
+      function resizeInstance(instance){
+        item = instance.elements[0];
+        resizeGridItem(item);
+      }
+
+      window.onload = resizeAllGridItems();
+      window.addEventListener("resize", resizeAllGridItems);
+
+    </script>
 
   </body>
 </html>
