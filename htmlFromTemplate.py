@@ -35,6 +35,8 @@ def processCSV(filepath):
                 year = "2011"
             if comment.lower() == "no" or comment.lower() == "n/a":
                 comment = ""
+            if year == "202,120,222,026":
+                year = "2021,2022,2026"
 
             row = "          <tr><td>"+name+"</td> <td>"
             rowNoHTML = name + " (" + fusdAffiliation;
