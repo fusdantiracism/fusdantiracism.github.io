@@ -33,10 +33,19 @@ def processCSV(filepath):
             if "Would have graduated 2014, left school in 2011" in year:
                 otherAffiliation = year
                 year = "2011"
-            if comment.lower() == "no" or comment.lower() == "n/a":
+            if "2014, 2015,  2018;  Kids suffered all the abuses from racist teachers." in year:
+                otherAffiliation = year
+                year = "2018"
+            if otherAffiliation.lower().strip() in ["no", "n/a", "na", "none"]:
+                otherAffiliation = ""
+            if comment.lower().strip()  in ["no", "n/a", "na", "none"]:
                 comment = ""
             if year == "202,120,222,026":
                 year = "2021,2022,2026"
+            if otherAffiliation == "Only my name":
+                otherAffiliation = ""
+            if comment == "Not as of now!!":
+                comment = ""
 
             row = "          <tr><td>"+name+"</td> <td>"
             rowNoHTML = name + " (" + fusdAffiliation;
@@ -47,9 +56,12 @@ def processCSV(filepath):
                     row += school
                     rowNoHTML += school
                     if (len(year.strip()) > 0):
-                        row += " " + year
-                        rowNoHTML += " " + year
-                    row += ")"
+                        row += " "
+                        rowNoHTML += " "
+                if (len(year.strip()) > 0):
+                    row += year
+                    rowNoHTML += year
+                row += ")"
             if (len(otherAffiliation.strip()) > 0):
                 otherAffiliationI = len(otherAffiliationData)
                 row += '&nbsp;&nbsp;<i id="comment%d-button" class="fa fa-plus" aria-hidden="true"></i>' % otherAffiliationI
