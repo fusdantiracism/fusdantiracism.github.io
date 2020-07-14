@@ -42,6 +42,8 @@ def processCSV(filepath):
                 comment = ""
             if year == "202,120,222,026":
                 year = "2021,2022,2026"
+            if year == "Mission San Jose High 2023":
+                year = "2023"
             if otherAffiliation == "Only my name":
                 otherAffiliation = ""
             if comment == "Not as of now!!":
