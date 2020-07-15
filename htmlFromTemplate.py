@@ -38,7 +38,7 @@ def processCSV(filepath):
                 year = "2018"
             if otherAffiliation.lower().strip() in ["no", "n/a", "na", "none", "diversify the admin & teachers-need multi-ethnic group to match the student body in the school of attendance."]:
                 otherAffiliation = ""
-            if comment.lower().strip()  in ["no", "n/a", "na", "none", "Aaryan Rustagi"]:
+            if comment.lower().strip()  in ["no", "n/a", "na", "none", "aaryan rustagi"]:
                 comment = ""
             if year == "202,120,222,026":
                 year = "2021,2022,2026"
