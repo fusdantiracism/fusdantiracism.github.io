@@ -49,10 +49,10 @@ def processCSV(filepath):
             if comment == "Not as of now!!":
                 comment = ""
 
-            row = "          <tr><td>"+name+"</td> <td>"
+            row = "<td>"+name
             rowNoHTML = name + " (" + fusdAffiliation;
             if (len(school.strip()) > 0 or len(year.strip()) > 0):
-                row += "("
+                row += " ("
                 rowNoHTML += ", "
                 if (len(school.strip()) > 0):
                     row += school
@@ -68,7 +68,7 @@ def processCSV(filepath):
                 otherAffiliationI = len(otherAffiliationData)
                 row += '&nbsp;&nbsp;<i id="comment%d-button" class="fa fa-plus" aria-hidden="true"></i>' % otherAffiliationI
                 otherAffiliationData.append(otherAffiliation)
-            row += "</td></tr>\n"
+            row += "</td>"
             rowNoHTML += ")"
 
             if (len(comment.strip()) > 0):
@@ -85,6 +85,7 @@ def processCSV(filepath):
 
 if __name__ == "__main__":
     minNumSig = 1
+    numSigCols = 2
 
     signatoriesByFUSDAffiliation, numSignatories, otherAffiliationData, commentBlocks = processCSV("FUSD Anti-Racism Petition (Responses) - Form Responses 1.csv")
     print(signatoriesByFUSDAffiliation)
@@ -115,8 +116,17 @@ if __name__ == "__main__":
                             finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
                     elif (templateElement == "{{StudentsList}}"):
                         if ("FUSD Student" in signatoriesByFUSDAffiliation):
-                            for row in signatoriesByFUSDAffiliation["FUSD Student"]:
+                            for i in range(0, len(signatoriesByFUSDAffiliation["FUSD Student"]), numSigCols):
+                                row = "<tr>"
+                                for k in range(numSigCols):
+                                    if i+k < len(signatoriesByFUSDAffiliation["FUSD Student"]):
+                                        row += signatoriesByFUSDAffiliation["FUSD Student"][i+k]
+                                    else:
+                                        row += "<td></td>"
+                                row += "</tr>"
                                 finalLines.append(row)
+                            # for row in signatoriesByFUSDAffiliation["FUSD Student"]:
+                            #     finalLines.append(row)
                     elif (templateElement == "{{#Teachers}}"):
                         num = len(signatoriesByFUSDAffiliation["FUSD Teacher, Administration, or Staff (current or former)"]) if "FUSD Teacher, Administration, or Staff (current or former)" in signatoriesByFUSDAffiliation else 0
                         if num < minNumSig:
@@ -125,8 +135,17 @@ if __name__ == "__main__":
                             finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
                     elif (templateElement == "{{TeachersList}}"):
                         if ("FUSD Teacher, Administration, or Staff (current or former)" in signatoriesByFUSDAffiliation):
-                            for row in signatoriesByFUSDAffiliation["FUSD Teacher, Administration, or Staff (current or former)"]:
+                            for i in range(0, len(signatoriesByFUSDAffiliation["FUSD Teacher, Administration, or Staff (current or former)"]), numSigCols):
+                                row = "<tr>"
+                                for k in range(numSigCols):
+                                    if i+k < len(signatoriesByFUSDAffiliation["FUSD Teacher, Administration, or Staff (current or former)"]):
+                                        row += signatoriesByFUSDAffiliation["FUSD Teacher, Administration, or Staff (current or former)"][i+k]
+                                    else:
+                                        row += "<td></td>"
+                                row += "</tr>"
                                 finalLines.append(row)
+                            # for row in signatoriesByFUSDAffiliation["FUSD Teacher, Administration, or Staff (current or former)"]:
+                            #     finalLines.append(row)
                     elif (templateElement == "{{#Alumni}}"):
                         num = len(signatoriesByFUSDAffiliation["FUSD Alumni"]) if "FUSD Alumni" in signatoriesByFUSDAffiliation else 0
                         if num < minNumSig:
@@ -135,8 +154,17 @@ if __name__ == "__main__":
                             finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
                     elif (templateElement == "{{AlumniList}}"):
                         if ("FUSD Alumni" in signatoriesByFUSDAffiliation):
-                            for row in signatoriesByFUSDAffiliation["FUSD Alumni"]:
+                            for i in range(0, len(signatoriesByFUSDAffiliation["FUSD Alumni"]), numSigCols):
+                                row = "<tr>"
+                                for k in range(numSigCols):
+                                    if i+k < len(signatoriesByFUSDAffiliation["FUSD Alumni"]):
+                                        row += signatoriesByFUSDAffiliation["FUSD Alumni"][i+k]
+                                    else:
+                                        row += "<td></td>"
+                                row += "</tr>"
                                 finalLines.append(row)
+                            # for row in signatoriesByFUSDAffiliation["FUSD Alumni"]:
+                            #     finalLines.append(row)
                     elif (templateElement == "{{#Parents}}"):
                         num = len(signatoriesByFUSDAffiliation["FUSD Parent"]) if "FUSD Parent" in signatoriesByFUSDAffiliation else 0
                         if num < minNumSig:
@@ -145,8 +173,17 @@ if __name__ == "__main__":
                             finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
                     elif (templateElement == "{{ParentsList}}"):
                         if ("FUSD Parent" in signatoriesByFUSDAffiliation):
-                            for row in signatoriesByFUSDAffiliation["FUSD Parent"]:
+                            for i in range(0, len(signatoriesByFUSDAffiliation["FUSD Parent"]), numSigCols):
+                                row = "<tr>"
+                                for k in range(numSigCols):
+                                    if i+k < len(signatoriesByFUSDAffiliation["FUSD Parent"]):
+                                        row += signatoriesByFUSDAffiliation["FUSD Parent"][i+k]
+                                    else:
+                                        row += "<td></td>"
+                                row += "</tr>"
                                 finalLines.append(row)
+                            # for row in signatoriesByFUSDAffiliation["FUSD Parent"]:
+                            #     finalLines.append(row)
                     elif (templateElement == "{{#FremontCommunityMembers}}"):
                         num = len(signatoriesByFUSDAffiliation["Fremont Community Member"]) if "Fremont Community Member" in signatoriesByFUSDAffiliation else 0
                         if num < minNumSig:
@@ -155,8 +192,17 @@ if __name__ == "__main__":
                             finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
                     elif (templateElement == "{{FremontCommunityMembersList}}"):
                         if ("Fremont Community Member" in signatoriesByFUSDAffiliation):
-                            for row in signatoriesByFUSDAffiliation["Fremont Community Member"]:
+                            for i in range(0, len(signatoriesByFUSDAffiliation["Fremont Community Member"]), numSigCols):
+                                row = "<tr>"
+                                for k in range(numSigCols):
+                                    if i+k < len(signatoriesByFUSDAffiliation["Fremont Community Member"]):
+                                        row += signatoriesByFUSDAffiliation["Fremont Community Member"][i+k]
+                                    else:
+                                        row += "<td></td>"
+                                row += "</tr>"
                                 finalLines.append(row)
+                            # for row in signatoriesByFUSDAffiliation["Fremont Community Member"]:
+                            #     finalLines.append(row)
                     elif (templateElement == "{{#Other}}"):
                         num = len(signatoriesByFUSDAffiliation["Other"]) if "Other" in signatoriesByFUSDAffiliation else 0
                         if num < minNumSig:
@@ -165,11 +211,20 @@ if __name__ == "__main__":
                             finalLines = [beforeTemplateElement + str(num) + afterTemplateElement]
                     elif (templateElement == "{{OtherList}}"):
                         if ("Other" in signatoriesByFUSDAffiliation):
-                            for row in signatoriesByFUSDAffiliation["Other"]:
+                            for i in range(0, len(signatoriesByFUSDAffiliation["Other"]), numSigCols):
+                                row = "<tr>"
+                                for k in range(numSigCols):
+                                    if i+k < len(signatoriesByFUSDAffiliation["Other"]):
+                                        row += signatoriesByFUSDAffiliation["Other"][i+k]
+                                    else:
+                                        row += "<td></td>"
+                                row += "</tr>"
                                 finalLines.append(row)
+                            # for row in signatoriesByFUSDAffiliation["Other"]:
+                            #     finalLines.append(row)
                     elif (templateElement == "{{Comments}}"):
                         for commentBlock in commentBlocks:
-                            print(commentBlock)
+                            # print(commentBlock)
                             finalLines.append(commentBlock)
                     elif (templateElement == "{{Other_Affiliations}}"):
                         for i in range(len(otherAffiliationData)):
