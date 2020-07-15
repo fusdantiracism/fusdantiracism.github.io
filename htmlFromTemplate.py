@@ -36,7 +36,7 @@ def processCSV(filepath):
             if "2014, 2015,  2018;  Kids suffered all the abuses from racist teachers." in year:
                 otherAffiliation = year
                 year = "2018"
-            if otherAffiliation.lower().strip() in ["no", "n/a", "na", "none"]:
+            if otherAffiliation.lower().strip() in ["no", "n/a", "na", "none", "diversify the admin & teachers-need multi-ethnic group to match the student body in the school of attendance."]:
                 otherAffiliation = ""
             if comment.lower().strip()  in ["no", "n/a", "na", "none", "Aaryan Rustagi"]:
                 comment = ""
