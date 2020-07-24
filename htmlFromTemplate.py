@@ -36,14 +36,16 @@ def processCSV(filepath):
             if "2014, 2015,  2018;  Kids suffered all the abuses from racist teachers." in year:
                 otherAffiliation = year
                 year = "2018"
-            if otherAffiliation.lower().strip() in ["no", "n/a", "na", "none", "diversify the admin & teachers-need multi-ethnic group to match the student body in the school of attendance."]:
+            if otherAffiliation.lower().strip() in ["no", "n/a", "na", "none", "diversify the admin & teachers-need multi-ethnic group to match the student body in the school of attendance.", "alek gent-vincent"]:
                 otherAffiliation = ""
-            if comment.lower().strip()  in ["no", "n/a", "na", "none", "aaryan rustagi"]:
+            if comment.lower().strip()  in ["no", "n/a", "na", "none", "aaryan rustagi", "yes", "diya", "not as of now!!"]:
                 comment = ""
             if year == "202,120,222,026":
                 year = "2021,2022,2026"
             if year == "Mission San Jose High 2023":
                 year = "2023"
+            if year == "i graduated from MSJ in FUSD in 1998.  I am currently a teacher for FUSD.":
+                year = "(MSJHS 1998)"
             if otherAffiliation == "Only my name":
                 otherAffiliation = ""
             if comment == "Not as of now!!":
