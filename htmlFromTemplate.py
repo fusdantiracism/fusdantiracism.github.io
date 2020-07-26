@@ -62,6 +62,8 @@ def processCSV(filepath):
                 year = "2023"
             if year == "i graduated from MSJ in FUSD in 1998.  I am currently a teacher for FUSD.":
                 year = "(MSJHS 1998)"
+            if year.lower().strip() == "n/a":
+                year = ""
             if otherAffiliation == "Only my name":
                 otherAffiliation = ""
             if comment == "Not as of now!!":
