@@ -29,6 +29,22 @@ def processCSV(filepath):
             otherAffiliation = row[otherAffiliationCol]
             comment = row[commentCol]
 
+            if "<" in name or ">" in name:
+                print("HTML Cross-Site Scripting attack name", name)
+                continue
+            if "<" in school or ">" in school:
+                print("HTML Cross-Site Scripting attack school", school)
+                continue
+            if "<" in year or ">" in year:
+                print("HTML Cross-Site Scripting attack year", year)
+                year = ""
+            if "<" in otherAffiliation or ">" in otherAffiliation:
+                print("HTML Cross-Site Scripting attack otherAffiliation", otherAffiliation)
+                otherAffiliation = ""
+            if "<" in comment or ">" in comment:
+                print("HTML Cross-Site Scripting attack comment", comment)
+                comment = ""
+
             # Correct anomalous form entries that mess up the webpage design
             if "Would have graduated 2014, left school in 2011" in year:
                 otherAffiliation = year
