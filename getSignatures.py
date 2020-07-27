@@ -32,7 +32,9 @@ def getSignatures():
 
     drive_service = build('drive', 'v3', credentials=creds)
 
-    file_id = '1l8Uzo5nw7tQgg2AbGL_QS-_uYz2GQcU34cFLjgqSFDw'
+    with open("googleDriveFileID.txt", "r") as f:
+        file_id = f.read().strip()
+
     request = drive_service.files().export_media(fileId=file_id,
                                                  mimeType='text/csv')
     fh = open("FUSD Anti-Racism Petition (Responses) - Form Responses 1.csv", "wb")
