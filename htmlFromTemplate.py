@@ -1,6 +1,7 @@
 import csv
 import html
 import matplotlib.pyplot as plt
+import traceback
 
 def processCSV(filepath):
     nameCol = 1
@@ -277,112 +278,116 @@ if __name__ == "__main__":
                     finalFile.writelines([line])
 
     # Save pie charts
-    # affiliationLabels = [affiliation for affiliation in signatoriesByFUSDAffiliation]
-    affiliationLabels = ["FUSD Teacher, Administration, or Staff (current or former)", "FUSD Student", "FUSD Parent", "Other", "FUSD Alumni", "Fremont Community Member"]
-    affiliationCount = [len(signatoriesByFUSDAffiliation[affiliation]) for affiliation in affiliationLabels]
-    totalCount = sum(affiliationCount)
-    affiliationLabels[0] = "FUSD Teacher, Administration, \nor Staff (current or former)"
+    try:
+        # affiliationLabels = [affiliation for affiliation in signatoriesByFUSDAffiliation]
+        affiliationLabels = ["FUSD Teacher, Administration, or Staff (current or former)", "FUSD Student", "FUSD Parent", "Other", "FUSD Alumni", "Fremont Community Member"]
+        affiliationCount = [len(signatoriesByFUSDAffiliation[affiliation]) for affiliation in affiliationLabels]
+        totalCount = sum(affiliationCount)
+        affiliationLabels[0] = "FUSD Teacher, Administration, \nor Staff (current or former)"
 
-    def printPercent(pct):
-        count = int(round(totalCount*pct/100))
-        return '%1.1f%%\n(%d)' % (pct, count)
+        def printPercent(pct):
+            count = int(round(totalCount*pct/100))
+            return '%1.1f%%\n(%d)' % (pct, count)
 
-    fig = plt.figure(figsize=(8,6))
-    ax = fig.subplots()
-    ax.pie(affiliationCount, labels=affiliationLabels, autopct=printPercent)
-    ax.set_title("Signatories by FUSD Affiliation (%d)" % totalCount)
-    plt.savefig("signatoriesByFUSDAffiliation.png")
+        fig = plt.figure(figsize=(8,6))
+        ax = fig.subplots()
+        ax.pie(affiliationCount, labels=affiliationLabels, autopct=printPercent)
+        ax.set_title("Signatories by FUSD Affiliation (%d)" % totalCount)
+        plt.savefig("signatoriesByFUSDAffiliation.png")
 
-    schoolToAttendanceAreaAndLevel = {
-        "American High" : ("American High School", "High"),
-        "Ardenwood Elementary" : ("American High School", "Elementary"),
-        "Brookvale Elementary" : ("American High School", "Elementary"),
-        "Forest Park Elementary" : ("American High School", "Elementary"),
-        "Oliveira Elementary" : ("American High School", "Elementary"),
-        "Patterson Elementary" : ("American High School", "Elementary"),
-        "Thornton Junior High" : ("American High School", "Middle"),
-        "Warwick Elementary" : ("American High School", "Elementary"),
-        "Green Elementary" : ("Irvington High School", "Elementary"),
-        "Grimmer Elementary" : ("Irvington High School", "Elementary"),
-        "Hirsch Elementary" : ("Irvington High School", "Elementary"),
-        "Horner Middle School" : ("Irvington High School", "Middle"),
-        "Horner Junior High" : ("Irvington High School", "Middle"),
-        "Irvington High" : ("Irvington High School", "High"),
-        "Leitch Elementary" : ("Irvington High School", "Elementary"),
-        "Warm Springs Elementary" : ("Irvington High School", "Elementary"),
-        "Weibel Elementary" : ("Irvington High School", "Elementary"),
-        "Azevada Elementary" : ("Kennedy High School", "Elementary"),
-        "Blacow Elementary" : ("Kennedy High School", "Elementary"),
-        "Brier Elementary" : ("Kennedy High School", "Elementary"),
-        "Bringhurst Elementary" : ("Kennedy High School", "Elementary"),
-        "Durham Elementary" : ("Kennedy High School", "Elementary"),
-        "Kennedy High" : ("Kennedy High School", "High"),
-        "Mattos Elementary" : ("Kennedy High School", "Elementary"),
-        "Millard Elementary" : ("Kennedy High School", "Elementary"),
-        "Walters Middle" : ("Kennedy High School", "Middle"),
-        "Chadbourne Elementary" : ("Mission San Jose High School", "Elementary"),
-        "Gomes Elementary" : ("Mission San Jose High School", "Elementary"),
-        "Hopkins Junior High" : ("Mission San Jose High School", "Middle"),
-        "Mission San Jose Elementary" : ("Mission San Jose High School", "Elementary"),
-        "Mission San Jose High" : ("Mission San Jose High School", "High"),
-        "Mission Valley Elementary" : ("Mission San Jose High School", "Elementary"),
-        "Cabrillo Elementary" : ("Washington High School", "Elementary"),
-        "Centerville Junior High" : ("Washington High School", "Elementary"),
-        "Glenmoor Elementary" : ("Washington High School", "Elementary"),
-        "Maloney Elementary" : ("Washington High School", "Elementary"),
-        "Niles Elementary" : ("Washington High School", "Elementary"),
-        "Parkmont Elementary" : ("Washington High School", "Elementary"),
-        "Vallejo Mill Elementary" : ("Washington High School", "Elementary"),
-        "Washington High" : ("Washington High School", "High"),
-        "Cal-SAFE" : ("Other", "Other"),
-        "Circle of Independent Learning" : ("Other", "Other"),
-        "Fremont Adult and Continuing Ed" : ("Other", "Other"),
-        "Glankler Early Learning Center" : ("Other", "Other"),
-        "Native American" : ("Other", "Other"),
-        "Preschool" : ("Other", "Other"),
-        "Robertson High" : ("Other", "Other"),
-        "Vista Alternative" : ("Other", "Other"),
-    }
+        schoolToAttendanceAreaAndLevel = {
+            "American High" : ("American High School", "High"),
+            "Ardenwood Elementary" : ("American High School", "Elementary"),
+            "Brookvale Elementary" : ("American High School", "Elementary"),
+            "Forest Park Elementary" : ("American High School", "Elementary"),
+            "Oliveira Elementary" : ("American High School", "Elementary"),
+            "Patterson Elementary" : ("American High School", "Elementary"),
+            "Thornton Junior High" : ("American High School", "Middle"),
+            "Warwick Elementary" : ("American High School", "Elementary"),
+            "Green Elementary" : ("Irvington High School", "Elementary"),
+            "Grimmer Elementary" : ("Irvington High School", "Elementary"),
+            "Hirsch Elementary" : ("Irvington High School", "Elementary"),
+            "Horner Middle School" : ("Irvington High School", "Middle"),
+            "Horner Junior High" : ("Irvington High School", "Middle"),
+            "Irvington High" : ("Irvington High School", "High"),
+            "Leitch Elementary" : ("Irvington High School", "Elementary"),
+            "Warm Springs Elementary" : ("Irvington High School", "Elementary"),
+            "Weibel Elementary" : ("Irvington High School", "Elementary"),
+            "Azevada Elementary" : ("Kennedy High School", "Elementary"),
+            "Blacow Elementary" : ("Kennedy High School", "Elementary"),
+            "Brier Elementary" : ("Kennedy High School", "Elementary"),
+            "Bringhurst Elementary" : ("Kennedy High School", "Elementary"),
+            "Durham Elementary" : ("Kennedy High School", "Elementary"),
+            "Kennedy High" : ("Kennedy High School", "High"),
+            "Mattos Elementary" : ("Kennedy High School", "Elementary"),
+            "Millard Elementary" : ("Kennedy High School", "Elementary"),
+            "Walters Middle" : ("Kennedy High School", "Middle"),
+            "Chadbourne Elementary" : ("Mission San Jose High School", "Elementary"),
+            "Gomes Elementary" : ("Mission San Jose High School", "Elementary"),
+            "Hopkins Junior High" : ("Mission San Jose High School", "Middle"),
+            "Mission San Jose Elementary" : ("Mission San Jose High School", "Elementary"),
+            "Mission San Jose High" : ("Mission San Jose High School", "High"),
+            "Mission Valley Elementary" : ("Mission San Jose High School", "Elementary"),
+            "Cabrillo Elementary" : ("Washington High School", "Elementary"),
+            "Centerville Junior High" : ("Washington High School", "Elementary"),
+            "Glenmoor Elementary" : ("Washington High School", "Elementary"),
+            "Maloney Elementary" : ("Washington High School", "Elementary"),
+            "Niles Elementary" : ("Washington High School", "Elementary"),
+            "Parkmont Elementary" : ("Washington High School", "Elementary"),
+            "Vallejo Mill Elementary" : ("Washington High School", "Elementary"),
+            "Washington High" : ("Washington High School", "High"),
+            "Cal-SAFE" : ("Other", "Other"),
+            "Circle of Independent Learning" : ("Other", "Other"),
+            "Fremont Adult and Continuing Ed" : ("Other", "Other"),
+            "Glankler Early Learning Center" : ("Other", "Other"),
+            "Native American" : ("Other", "Other"),
+            "Preschool" : ("Other", "Other"),
+            "Robertson High" : ("Other", "Other"),
+            "Vista Alternative" : ("Other", "Other"),
+        }
 
-    attendanceAreaLabelToCount = {}
-    levelLabelToCount = {}
-    for data in rawData:
-        school = data["school"].strip()
-        if len(school) > 0:
-            attendanceArea = schoolToAttendanceAreaAndLevel[school][0]
-            if attendanceArea not in attendanceAreaLabelToCount:
-                attendanceAreaLabelToCount[attendanceArea] = 0
-            attendanceAreaLabelToCount[attendanceArea] += 1
-            level = schoolToAttendanceAreaAndLevel[school][1]
-            if level not in levelLabelToCount:
-                levelLabelToCount[level] = 0
-            levelLabelToCount[level] += 1
+        attendanceAreaLabelToCount = {}
+        levelLabelToCount = {}
+        for data in rawData:
+            school = data["school"].strip()
+            if len(school) > 0:
+                attendanceArea = schoolToAttendanceAreaAndLevel[school][0]
+                if attendanceArea not in attendanceAreaLabelToCount:
+                    attendanceAreaLabelToCount[attendanceArea] = 0
+                attendanceAreaLabelToCount[attendanceArea] += 1
+                level = schoolToAttendanceAreaAndLevel[school][1]
+                if level not in levelLabelToCount:
+                    levelLabelToCount[level] = 0
+                levelLabelToCount[level] += 1
 
-    attendanceAreaLabels = [attendanceArea for attendanceArea in attendanceAreaLabelToCount]
-    attendanceAreaLabels = ["Irvington High School", "Kennedy High School", "Washington High School", "American High School", "Mission San Jose High School", "Other"]
-    attendanceAreaCount = [attendanceAreaLabelToCount[attendanceArea] for attendanceArea in attendanceAreaLabels]
-    totalCount = sum(attendanceAreaCount)
+        attendanceAreaLabels = [attendanceArea for attendanceArea in attendanceAreaLabelToCount]
+        attendanceAreaLabels = ["Irvington High School", "Kennedy High School", "Washington High School", "American High School", "Mission San Jose High School", "Other"]
+        attendanceAreaCount = [attendanceAreaLabelToCount[attendanceArea] for attendanceArea in attendanceAreaLabels]
+        totalCount = sum(attendanceAreaCount)
 
-    def printPercent(pct):
-        count = int(round(totalCount*pct/100))
-        return '%1.1f%%\n(%d)' % (pct, count)
+        def printPercent(pct):
+            count = int(round(totalCount*pct/100))
+            return '%1.1f%%\n(%d)' % (pct, count)
 
-    fig = plt.figure(figsize=(8,6))
-    ax = fig.subplots()
-    ax.pie(attendanceAreaCount, labels=attendanceAreaLabels, autopct=printPercent)
-    ax.set_title("Signatories by Attendance Area (%d)" % totalCount)
-    plt.savefig("signatoriesByAttendanceArea.png")
+        fig = plt.figure(figsize=(8,6))
+        ax = fig.subplots()
+        ax.pie(attendanceAreaCount, labels=attendanceAreaLabels, autopct=printPercent)
+        ax.set_title("Signatories by Attendance Area (%d)" % totalCount)
+        plt.savefig("signatoriesByAttendanceArea.png")
 
-    levelLabels = [level for level in levelLabelToCount]
-    levelCount = [levelLabelToCount[level] for level in levelLabels]
-    totalCount = sum(levelCount)
+        levelLabels = [level for level in levelLabelToCount]
+        levelCount = [levelLabelToCount[level] for level in levelLabels]
+        totalCount = sum(levelCount)
 
-    def printPercent(pct):
-        count = int(round(totalCount*pct/100))
-        return '%1.1f%%\n(%d)' % (pct, count)
+        def printPercent(pct):
+            count = int(round(totalCount*pct/100))
+            return '%1.1f%%\n(%d)' % (pct, count)
 
-    fig = plt.figure(figsize=(8,6))
-    ax = fig.subplots()
-    ax.pie(levelCount, labels=levelLabels, autopct=printPercent)
-    ax.set_title("Signatories by School Level (%d)" % totalCount)
-    plt.savefig("signatoriesBySchoolLevel.png")
+        fig = plt.figure(figsize=(8,6))
+        ax = fig.subplots()
+        ax.pie(levelCount, labels=levelLabels, autopct=printPercent)
+        ax.set_title("Signatories by School Level (%d)" % totalCount)
+        plt.savefig("signatoriesBySchoolLevel.png")
+    except Exception as err:
+        print("ERROR", err)
+        traceback.print_exc()
