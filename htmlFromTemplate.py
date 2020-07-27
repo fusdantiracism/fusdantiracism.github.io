@@ -60,6 +60,9 @@ def processCSV(filepath):
                 otherAffiliation = ""
             if comment.lower().strip()  in ["no", "n/a", "na", "none", "aaryan rustagi", "yes", "diya", "not as of now!!"]:
                 comment = ""
+            if comment.strip() == "Retired teacher":
+                otherAffiliation = "Retired teacher"
+                comment = ""
             if year == "202,120,222,026":
                 year = "2021,2022,2026"
             if year == "Mission San Jose High 2023":
