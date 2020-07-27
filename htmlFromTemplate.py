@@ -1,4 +1,5 @@
 import csv
+import html
 
 def processCSV(filepath):
     nameCol = 1
@@ -20,6 +21,7 @@ def processCSV(filepath):
             totalNum += 1
 
             fusdAffiliation = row[fusdAffiliationCol]
+            fusdAffiliation = html.escape(fusdAffiliation)
             if fusdAffiliation not in signatoriesByFUSDAffiliation:
                 signatoriesByFUSDAffiliation[fusdAffiliation] = []
 
@@ -68,6 +70,12 @@ def processCSV(filepath):
                 otherAffiliation = ""
             if comment == "Not as of now!!":
                 comment = ""
+
+            name = html.escape(name)
+            school = html.escape(school)
+            year = html.escape(year)
+            otherAffiliation = html.escape(otherAffiliation)
+            comment = html.escape(comment)
 
             row = "<td>"+name
             rowNoHTML = name + " (" + fusdAffiliation;
