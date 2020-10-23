@@ -195,6 +195,13 @@
         Signatories:&nbsp;&nbsp;&nbsp;<a href="#comments"><button class="w3-btn w3-round-xxlarge w3-black w3-medium w3-justify" style="margin-right: 10px">Read the Comments</button></a>
       </h2>
 
+      <h4>Organizations</h4>
+      <div class="w3-center">
+        <table style="margin-left:auto; margin-right:auto">
+          <tr><td>Fremont Unified District Teachers Association</td></tr>
+        </table>
+      </div>
+
       <h4>{{#Students}} FUSD Students</h4>
       <div class="w3-center">
         <table style="margin-left:auto; margin-right:auto">
